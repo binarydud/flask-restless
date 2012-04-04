@@ -173,6 +173,8 @@ def _to_dict(instance, deep=None, exclude=None):
     dictionary representation of the object.
 
     """
+    if hasattr(instance, '_to_dict'):
+        return instance._to_dict(deep, exclude)
     deep = deep or {}
     exclude = exclude or ()
     # create the dictionary mapping column name to value
